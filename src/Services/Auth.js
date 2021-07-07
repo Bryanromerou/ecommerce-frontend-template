@@ -8,13 +8,14 @@ class AuthModel {
     if(!data) return new Error("Invalid Credentials")
     this.saveUserFromLocalStorage(data.user);
     return data.user
-    // return axios.post(`${URL}/googleLogin`,payload,{headers:this.getUserTokenFromLocalStorage()})
   }
+
   static makeAdmin(){
     console.log(`${URL}/makeAdmin`)
     console.log({headers:this.getUserFromLocalStorage()})
     return axios.post(`${URL}/makeAdmin`,{secretKey:"Paloma123"},{headers:this.getUserFromLocalStorage()})
   }
+
   static getUserFromLocalStorage(){
     const user = JSON.parse(localStorage.getItem("user"));
 
@@ -24,6 +25,7 @@ class AuthModel {
 			return {};
 		}
   }
+  
   static saveUserFromLocalStorage(user){
     localStorage.setItem("user",JSON.stringify(user))
   }

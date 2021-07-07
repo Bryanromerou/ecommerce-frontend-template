@@ -23,14 +23,15 @@ const Index = () => {
   return (
     <div>
       <Navbar  bg="light" expand="lg">
-        <Navbar.Brand href="#home">The Dove Guy</Navbar.Brand>
+        <Navbar.Brand href="/">Logo</Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Nav>
-            <Nav.Link href="/">Home</Nav.Link>
+            {/* <Nav.Link href="/">Home</Nav.Link> */}
+            <Nav.Link href="/products">Products</Nav.Link>
             {user?
             <>
-              <Nav.Link href="/profile">Profile</Nav.Link>
+              {/* <Nav.Link href="/profile">Profile</Nav.Link> */}
               <Nav.Link onClick={signOut}>Sign Out</Nav.Link>
             </>
             :

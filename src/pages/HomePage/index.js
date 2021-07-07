@@ -12,7 +12,7 @@ const HomePage = ({location}) => {
   
   return (
     <div>
-      The Dove Guy E-commerce website
+      <h1>Welcome Page for Ecommerce website</h1>
     </div>
   );
 }
