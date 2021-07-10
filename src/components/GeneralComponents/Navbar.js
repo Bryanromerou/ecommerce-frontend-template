@@ -2,11 +2,16 @@ import React, { useEffect, useState } from 'react';
 import {
   Navbar, Nav
 } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 
 const Index = () => {
   const history = useHistory();
   const [user, setUser] = useState(null);
+  let cartTotal = useSelector((state)=> Object.keys(state.cart.cart).length);
+  // let cart = useSelector((state)=> state.cart);
+  // let state = useSelector((state)=> state);
+  // console.log(state)
 
   useEffect(()=>{
     const user = JSON.parse(localStorage.getItem("user"))
@@ -19,7 +24,7 @@ const Index = () => {
     history.push("/")
   }
 
-  let cartTotal = 0
+  // let cartTotal = Object.keys(cart).length
   return (
     <div>
       <Navbar  bg="light" expand="lg">

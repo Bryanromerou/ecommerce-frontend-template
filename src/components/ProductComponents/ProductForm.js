@@ -2,7 +2,7 @@ import React from 'react';
 import Form from "react-jsonschema-form";
 import ProductModel from '../../Services/Product';
 // import Form from "@industrialdev/react-jsonschema-form";
-import MaterialJsonSchemaForm from 'react-jsonschema-form-material-ui';
+// import MaterialJsonSchemaForm from 'react-jsonschema-form-material-ui';
 
 const Index = () => {
   const submitHandler = async({formData}) =>{

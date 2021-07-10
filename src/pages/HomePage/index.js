@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 
 const HomePage = ({location}) => {
+  const state = useSelector((state)=> state);
+  console.log(state)
   const history = useHistory()
   useEffect(()=>{
     if(location.state){

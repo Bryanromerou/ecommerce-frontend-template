@@ -16,7 +16,7 @@ const Profile = () => {
       <h2>
       {localUser.name}
       </h2>
-      {localUser.role =="ADMIN"?
+      {localUser.role ==="ADMIN"?
       <h3>You are an Admin!</h3>:
       <button onClick={makeAdmin}>Make Admin</button>
       }

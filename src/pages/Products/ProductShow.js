@@ -3,6 +3,9 @@ import {Modal,Button} from 'react-bootstrap';
 import { useParams } from 'react-router';
 import ProductModel from '../../Services/Product';
 import SizePicker from '../../components/ProductComponents/SizePicker';
+import { useDispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { actionCreators } from "../../state/index"
 
 const ProductShow = () => {
   const {id} = useParams();
@@ -13,10 +16,15 @@ const ProductShow = () => {
   useEffect(()=>{
     getData()
   },[])
+  const dispatch = useDispatch();
 
-  const addToCart = (product) =>{
-    console.log("adding to Shopping cart =>",product);
-    showModal(product)
+  const { addToCart } = bindActionCreators(actionCreators,dispatch)
+
+  const addToCartFunction = (product) =>{
+    // console.log("adding to Shopping cart =>",product);
+    addToCart(product);
+    showModal(product);
+    
     let cart = JSON.parse(localStorage.getItem("cart"))
     if(!cart){
       cart = {[product._id]:1}
@@ -49,7 +57,7 @@ const ProductShow = () => {
         <p>Price: {data.product.price}</p>
         <p>Description: {data.product.description}</p>
         {data.product.sizes.length ===0 ?
-          <Button onClick={()=>{addToCart(data.product)}}>Add To Cart</Button>:
+          <Button onClick={()=>{addToCartFunction(data.product)}}>Add To Cart</Button>:
           <SizePicker sizes={data.product.sizes}/>
         }
       </>

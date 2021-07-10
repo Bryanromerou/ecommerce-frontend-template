@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import GoogleLogin from 'react-google-login';
+// import GoogleLogin from 'react-google-login';
 const SignUp = () => {
   const [state, setState] = useState({
     email:"",
