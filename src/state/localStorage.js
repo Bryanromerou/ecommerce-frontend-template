@@ -21,14 +21,40 @@ export const saveState = async (state) =>{
   }
 }
 
-export const addNewProductToLocalState = (product) =>{
-  
+export const addNewProductToLocalState = (productId) =>{
+  let cart = JSON.parse(localStorage.getItem("cart"))
+  cart = checkIfProductAlreadyExist(cart,productId)
+  localStorage.setItem("cart",JSON.stringify(cart))
 } 
 
-export const removeProductToLocalState = (product) =>{
-  
+export const removeProductToLocalState = (productId) =>{
+  let cart = JSON.parse(localStorage.getItem("cart"))
+  cart = checkIfProductAlreadyExist(cart,productId,0)
+  localStorage.setItem("cart",JSON.stringify(cart))
 }
 
-export const modifyProductQuantity = (product, newQuantity) =>{
-  
+export const modifyProductQuantity = (productId, newQuantity) =>{
+  let cart = JSON.parse(localStorage.getItem("cart"))
+  cart = checkIfProductAlreadyExist(cart,productId,newQuantity,true)
+  localStorage.setItem("cart",JSON.stringify(cart))
+}
+
+const checkIfProductAlreadyExist = (cart, productId, newQuantity = 1,modify = false) =>{
+  if(!cart){
+    cart = {[productId]: newQuantity}
+  }else{
+    if(cart.hasOwnProperty(productId)){
+      cart[productId] += newQuantity
+    }else{
+      cart[productId] = newQuantity
+    }
+  }
+
+  if (newQuantity === 0){
+    delete cart[productId]
+  } else if(modify){
+    cart[productId] = newQuantity
+  }
+
+  return cart
 }
